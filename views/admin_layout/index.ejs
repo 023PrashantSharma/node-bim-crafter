@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/admin-assets/vendors/feather/feather.css" />
+    <link
+      rel="stylesheet"
+      href="/admin-assets/vendors/ti-icons/css/themify-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/admin-assets/vendors/css/vendor.bundle.base.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/admin-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/admin-assets/vendors/ti-icons/css/themify-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/admin-assets/js/select.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/admin-assets/css/vertical-layout-light/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/custom-style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/css/jquery.validation.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="/front-assets/images/temp-img/IMG-20221018-WA0029.jpg"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/lightGallery-master/dist/css/lightgallery.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/adminassets/lightGallery-master/dist/css/galary.css"
+    />
+  </head>
+  <body>
+    <input type="hidden" id="base_url" value="<%= process.env.BASE_URL %>" />
+    <input type="hidden" id="admin" value="<%= admin %>" />
+    <input
+      type="hidden"
+      id="flag_name"
+      value="<% if(typeof flag_name == 'string') { %><%= flag_name %><% } %>"
+    />
+    <input
+      type="hidden"
+      id="flag_name2"
+      value="<% if(typeof flag_name2 == 'string') { %><%= flag_name2 %><% } %>"
+    />
+    <input
+      type="hidden"
+      id="top_user"
+      value="<% if(typeof top_user == 'string') { %><%= top_user %><% } %>"
+    />
+
+    <div id="snackbar"></div>
+    <div id="snackbar-error"></div>
+    <div id="snackbar-success"></div>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper">
+        <% if (data.type != 1) { %> <%- include('./header') %> <% } %> <%-
+        include('../admin/'+data.fileName) %>
+      </div>
+    </div>
+    <!-- Logout Modal start -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-frame modal-top modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-8 text-right">
+                <p>
+                  Are you sure you want to logout? If you logout then your
+                  session is terminated.
+                </p>
+              </div>
+              <div class="col-md-4 text-right">
+                <button
+                  class="btn btn-danger waves-effect waves-light"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <a
+                  href="<%= admin %>/logout"
+                  class="btn btn-info waves-effect waves-light"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Logout Modal end -->
+
+    <script src="/admin-assets/vendors/js/vendor.bundle.base.js"></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/jquery.validate.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/js/additional-methods.min.js"
+    ></script>
+    <script type="text/javascript" src="/adminassets/js/validation.js"></script>
+    <script type="text/javascript" src="/adminassets/js/customjs.js"></script>
+    <script src="/admin-assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="/admin-assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="/admin-assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/admin-assets/js/dataTables.select.min.js"></script>
+    <script src="/admin-assets/js/off-canvas.js"></script>
+    <script src="/admin-assets/js/hoverable-collapse.js"></script>
+    <script src="/admin-assets/js/template.js"></script>
+    <script src="/admin-assets/js/settings.js"></script>
+    <script src="/admin-assets/js/todolist.js"></script>
+    <script src="/admin-assets/js/dashboard.js"></script>
+    <script src="/admin-assets/js/Chart.roundedBarCharts.js"></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/lightGallery-master/dist/js/lightgallery-all.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/adminassets/lightGallery-master/lib/jquery.mousewheel.min.js"
+    ></script>
+    <script>
+      var dataTable = "";
+      var flag_name = $("#flag_name").val();
+      if (flag_name == "sliderListTableData") {
+        dataTable = $("#sliderImageList").DataTable({
+          processing: true,
+          serverSide: true,
+          order: [0, "desc"],
+          ajax: {
+            url: admin + "/home-slider-images-list-grid-data",
+            type: "POST",
+            dataType: "json",
+            complete: function (r) {
+              $("#sliderImageList").lightGallery({
+                selector: ".item",
+              });
+            },
+          },
+          columns: [
+            { data: "sr" },
+            { data: "slider_image" },
+            { data: "title1" },
+            { data: "title2" },
+            { data: "description" },
+            { data: "insert_date" },
+            { data: "display_status" },
+            { data: null },
+          ],
+          columnDefs: [
+            {
+              targets: [-1],
+              render: function (a, b, data, d) {
+                var action = "";
+
+                action +=
+                  '<a href="javascript:void(0);" class="mr-2 openPopupDeleteSliderImage "  data-id="' +
+                  data.image_id +
+                  '"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button">Delete</button></a>';
+
+                if (data.status == true) {
+                  action +=
+                    '<a class="success blockUnblock" id="success-' +
+                    data.image_id +
+                    '-sliderimages-false"><button class="p-2 btn btn-outline-success btn-xs m-l-5 btn_cls" type="button" title="Inactivate">Inactivate</button></a>';
+                } else {
+                  action +=
+                    '<a class="danger blockUnblock" id="danger-' +
+                    data.image_id +
+                    '-sliderimages-true"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button" title="Activate">Activate</button></a>';
+                }
+
+                return action;
+              },
+            },
+          ],
+        });
+        dataTable.on("page.dt", function () {
+          $("html, body").animate(
+            {
+              scrollTop: $(".dataTables_wrapper").offset().top - 50,
+            },
+            "slow"
+          );
+        });
+      }
+      if (flag_name == "galleryListTableData") {
+        dataTable = $("#footerImageList").DataTable({
+          processing: true,
+          serverSide: true,
+          order: [0, "desc"],
+          ajax: {
+            url: admin + "/footer-slider-images-list-grid-data",
+            type: "POST",
+            dataType: "json",
+            complete: function (r) {
+              $("#sliderImageList").lightGallery({
+                selector: ".item",
+              });
+            },
+          },
+          columns: [
+            { data: "sr" },
+            { data: "gallery_image" },
+            { data: "insert_date" },
+            { data: "display_status" },
+            { data: null },
+          ],
+          columnDefs: [
+            {
+              targets: [-1],
+              render: function (a, b, data, d) {
+                var action = "";
+
+                action +=
+                  '<a href="javascript:void(0);" class="mr-2 openPopupDeleteFooterGalleryImage"  data-id="' +
+                  data.image_id +
+                  '"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button">Delete</button></a>';
+
+                if (data.status == true) {
+                  action +=
+                    '<a class="success blockUnblock" id="success-' +
+                    data.image_id +
+                    '-galleryimages-false"><button class="p-2 btn btn-outline-success btn-xs m-l-5 btn_cls" type="button" title="Inactivate">Inactivate</button></a>';
+                } else {
+                  action +=
+                    '<a class="danger blockUnblock" id="danger-' +
+                    data.image_id +
+                    '-galleryimages-true"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button" title="Activate">Activate</button></a>';
+                }
+
+                return action;
+              },
+            },
+          ],
+        });
+        dataTable.on("page.dt", function () {
+          $("html, body").animate(
+            {
+              scrollTop: $(".dataTables_wrapper").offset().top - 50,
+            },
+            "slow"
+          );
+        });
+      }
+      if (flag_name == "servicesPopularListTableData") {
+        dataTable = $("#servicesPopularImageList").DataTable({
+          processing: true,
+          serverSide: true,
+          order: [0, "desc"],
+          ajax: {
+            url: admin + "/popular-services-images-list-grid-data",
+            type: "POST",
+            dataType: "json",
+            complete: function (r) {
+              $("#servicesPopularImageList").lightGallery({
+                selector: ".item",
+              });
+            },
+          },
+          columns: [
+            { data: "sr" },
+            { data: "services_image" },
+            { data: "title" },
+            { data: "description" },
+            { data: "insert_date" },
+            { data: "display_status" },
+            { data: null },
+          ],
+          columnDefs: [
+            {
+              targets: [-1],
+              render: function (a, b, data, d) {
+                var action = "";
+
+                action +=
+                  '<a href="javascript:void(0);" class="mr-2 openPopupDeletePopularServicesImage"  data-id="' +
+                  data.image_id +
+                  '"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button">Delete</button></a>';
+
+                if (data.status == true) {
+                  action +=
+                    '<a class="success blockUnblock" id="success-' +
+                    data.image_id +
+                    '-popularservices-false"><button class="p-2 btn btn-outline-success btn-xs m-l-5 btn_cls" type="button" title="Inactivate">Inactivate</button></a>';
+                } else {
+                  action +=
+                    '<a class="danger blockUnblock" id="danger-' +
+                    data.image_id +
+                    '-popularservices-true"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button" title="Activate">Activate</button></a>';
+                }
+
+                return action;
+              },
+            },
+          ],
+        });
+        dataTable.on("page.dt", function () {
+          $("html, body").animate(
+            {
+              scrollTop: $(".dataTables_wrapper").offset().top - 50,
+            },
+            "slow"
+          );
+        });
+      }
+      if (flag_name == "servicesUpcomingListTableData") {
+        dataTable = $("#upcomingServicesImageList").DataTable({
+          processing: true,
+          serverSide: true,
+          order: [0, "desc"],
+          ajax: {
+            url: admin + "/upcoming-services-images-list-grid-data",
+            type: "POST",
+            dataType: "json",
+            complete: function (r) {
+              $("#upcomingServicesImageList").lightGallery({
+                selector: ".item",
+              });
+            },
+          },
+          columns: [
+            { data: "sr" },
+            { data: "services_image" },
+            { data: "title" },
+            { data: "description" },
+            { data: "insert_date" },
+            { data: "display_status" },
+            { data: null },
+          ],
+          columnDefs: [
+            {
+              targets: [-1],
+              render: function (a, b, data, d) {
+                var action = "";
+
+                action +=
+                  '<a href="javascript:void(0);" class="mr-2 openPopupDeleteUpcomingServicesImage"  data-id="' +
+                  data.image_id +
+                  '"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button">Delete</button></a>';
+
+                if (data.status == true) {
+                  action +=
+                    '<a class="success blockUnblock" id="success-' +
+                    data.image_id +
+                    '-upcomingservices-false"><button class="p-2 btn btn-outline-success btn-xs m-l-5 btn_cls" type="button" title="Inactivate">Inactivate</button></a>';
+                } else {
+                  action +=
+                    '<a class="danger blockUnblock" id="danger-' +
+                    data.image_id +
+                    '-upcomingservices-true"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button" title="Activate">Activate</button></a>';
+                }
+
+                return action;
+              },
+            },
+          ],
+        });
+        dataTable.on("page.dt", function () {
+          $("html, body").animate(
+            {
+              scrollTop: $(".dataTables_wrapper").offset().top - 50,
+            },
+            "slow"
+          );
+        });
+      }
+      if (flag_name == "softwareProficiancyListTableData") {
+        dataTable = $("#softwareProficiancyImageList").DataTable({
+          processing: true,
+          serverSide: true,
+          order: [0, "desc"],
+          ajax: {
+            url: admin + "/software-proficiancy-images-list-grid-data",
+            type: "POST",
+            dataType: "json",
+            complete: function (r) {
+              $("#softwareProficiancyImageList").lightGallery({
+                selector: ".item",
+              });
+            },
+          },
+          columns: [
+            { data: "sr" },
+            { data: "software_icon" },
+            { data: "title" },
+            { data: "description" },
+            { data: "insert_date" },
+            { data: "display_status" },
+            { data: null },
+          ],
+          columnDefs: [
+            {
+              targets: [-1],
+              render: function (a, b, data, d) {
+                var action = "";
+
+                action +=
+                  '<a href="javascript:void(0);" class="mr-2 openPopupDeleteSoftwareProficiancyImage"  data-id="' +
+                  data.image_id +
+                  '"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button">Delete</button></a>';
+
+                if (data.status == true) {
+                  action +=
+                    '<a class="success blockUnblock" id="success-' +
+                    data.image_id +
+                    '-softwareproficiancy-false"><button class="p-2 btn btn-outline-success btn-xs m-l-5 btn_cls" type="button" title="Inactivate">Inactivate</button></a>';
+                } else {
+                  action +=
+                    '<a class="danger blockUnblock" id="danger-' +
+                    data.image_id +
+                    '-softwareproficiancy-true"><button class="p-2 btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button" title="Activate">Activate</button></a>';
+                }
+
+                return action;
+              },
+            },
+          ],
+        });
+        dataTable.on("page.dt", function () {
+          $("html, body").animate(
+            {
+              scrollTop: $(".dataTables_wrapper").offset().top - 50,
+            },
+            "slow"
+          );
+        });
+      }
+    </script>
+  </body>
+</html>

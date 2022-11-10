@@ -1,0 +1,187 @@
+/* Form Layout */
+
+.from-title {
+    font-weight: 600;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    padding: 20px;
+}
+
+label.error {
+    font-size: 13px;
+    margin: 10px 0 0;
+    font-weight: 600;
+    position: absolute;
+    top: 70px;
+    padding: 0px 3px;
+    /* background: #d95c5c; */
+    /* border-radius: 6px; */
+    color: #F32013;
+    width: auto;
+    text-align: center;
+    left: -10px;
+    z-index: 11;
+    text-transform: none;
+    padding-left: 11px;
+    padding-right: 11px;
+
+}
+input[name="username"] + label.error ,input[name="password"]+label.error{
+    top: 40px;
+}
+textarea + label.error {
+    top: 125px;
+}
+.custom-image-button ~ label.error {
+    top: 40px;
+}
+input.error,
+select.error,
+textarea.error,
+select2.error {
+    border-bottom: 1px solid #d95c5c !important;
+    /* border-left: 5px solid #d95c5c !important; */
+    /* background-color: #FFFAFA !important; */
+}
+
+input.error,
+select.error,
+textarea.error,
+select2.error:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* label.error::before {
+    position: absolute;
+    content: "";
+    width: 0.6em;
+    height: 0.6em;
+    background-image: none;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transition: background 0.1s linear;
+    margin-left: -0.3em;
+    top: auto;
+    background: #d95c5c;
+    right: 11px;
+    bottom: -4px;
+    left: auto;
+} */
+
+.error_astrick {
+    border-color: #F32013;
+}
+
+input.error #demo1 {
+    border-bottom: #F32013 !important;;
+}
+.form-group {
+    margin-bottom: 30px !important;
+    position: relative;
+}
+.progress {
+    margin-top: 5px;
+    display: none;
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px 10px 10px 0px !important;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.upload-btn {
+    /* position: relative;
+    right: -217px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    border-radius: 3px;
+    top: -41px; */
+
+    border-radius: 0;
+    line-height: 29px;
+}
+.taskchat-upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    float: right;
+    left: -100px;
+    bottom: 32px;
+}
+
+.taskchat-upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.rmv {
+    cursor: pointer;
+    color: #fff;
+    border-radius: 30px;
+    border: 1px solid #fff;
+    background: rgb(217 92 92);
+    /* margin: 13px -10px; */
+    position: relative;
+    top: -50px;
+    left: -15px;
+    height: 22px;
+    width: 22px;
+    line-height: 20px;
+    text-align: center;
+    padding: 0;
+
+}
+img {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+img:hover {
+    opacity: 0.7;
+}
+.custom-image-button div,.custom-image-button ~ input{
+    background-color: #4B49AC;
+    color: #fff;
+    border-radius: 0px 10px 10px 0px;
+}
+.custom-image-button{
+    position: absolute;
+    height: 46px;
+    right: 0px !important;
+    display: flex;
+    align-items: center;
+}
+.custom-image-button{
+    z-index: 99;
+}
+.btn{
+    border-radius: 8px;
+}
+.profile-text{
+    font-weight: bold;
+    background-color: #4b49ac;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}

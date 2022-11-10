@@ -1,0 +1,246 @@
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div
+    class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+  >
+    <a class="navbar-brand brand-logo mr-5" href="index.html"
+      ><img src="/front-assets/images/temp-img/IMG-20221018-WA0029.jpg" class="mr-2" alt="logo"
+    /></a>
+    <a class="navbar-brand brand-logo-mini" href="index.html"
+      ><img src="/front-assets/images/temp-img/IMG-20221018-WA0029.jpg" alt="logo"
+    /></a>
+  </div>
+  <div
+    class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
+  >
+    <button
+      class="navbar-toggler navbar-toggler align-self-center"
+      type="button"
+      data-toggle="minimize"
+    >
+      <span class="icon-menu"></span>
+    </button>
+    <ul class="navbar-nav mr-lg-2">
+      <!-- <li class="nav-item nav-search d-none d-lg-block">
+        <div class="input-group">
+          <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+            <span class="input-group-text" id="search">
+              <i class="icon-search"></i>
+            </span>
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="navbar-search-input"
+            placeholder="Search now"
+            aria-label="search"
+            aria-describedby="search"
+          />
+        </div>
+      </li> -->
+    </ul>
+    <ul class="navbar-nav navbar-nav-right">
+      <!-- <li class="nav-item dropdown">
+        <a
+          class="nav-link count-indicator dropdown-toggle"
+          id="notificationDropdown"
+          href="#"
+          data-toggle="dropdown"
+        >
+          <i class="icon-bell mx-0"></i>
+          <span class="count"></span>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+          aria-labelledby="notificationDropdown"
+        >
+          <p class="mb-0 font-weight-normal float-left dropdown-header">
+            Notifications
+          </p>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-success">
+                <i class="ti-info-alt mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-normal">
+                Application Error
+              </h6>
+              <p class="font-weight-light small-text mb-0 text-muted">
+                Just now
+              </p>
+            </div>
+          </a>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-warning">
+                <i class="ti-settings mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-normal">Settings</h6>
+              <p class="font-weight-light small-text mb-0 text-muted">
+                Private message
+              </p>
+            </div>
+          </a>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-info">
+                <i class="ti-user mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-normal">
+                New user registration
+              </h6>
+              <p class="font-weight-light small-text mb-0 text-muted">
+                2 days ago
+              </p>
+            </div>
+          </a>
+        </div>
+      </li> -->
+      <li class="nav-item nav-profile dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          data-toggle="dropdown"
+          id="profileDropdown"
+        >
+          <!-- <img src="/admin-assets/images/faces/face28.jpg" alt="profile" /> -->
+          <div class="profile-text"><%=userInfo.name.split("")[0]%></div>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right navbar-dropdown"
+          aria-labelledby="profileDropdown"
+        >
+          <a class="dropdown-item">
+            <i class="ti-settings text-primary"></i>
+            Settings
+          </a>
+          <a class="dropdown-item openPopupForLogout">
+            <i class="ti-power-off text-primary"></i>
+            Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button
+      class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+      type="button"
+      data-toggle="offcanvas"
+    >
+      <span class="icon-menu"></span>
+    </button>
+  </div>
+</nav>
+<!-- partial:partials/_settings-panel.html -->
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="<%= admin %>/dashboard">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+      <% if (typeof master_menu == 'string' && master_menu == 'home') { %>
+                        class="nav-link collapsed"
+                    <% }else{ %>
+                        class="nav-link"
+                      <% } %> 
+        data-toggle="collapse"
+        href="#ui-basic"
+        aria-expanded="false"
+        aria-controls="ui-basic"
+      >
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Home</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div 
+        <% if (typeof master_menu == 'string' && master_menu == 'home') { %>
+                        class="collapse show"
+                    <% }else{ %>
+                        class="collapse"
+                      <% } %> 
+                      id="ui-basic" <% if (typeof master_menu == 'string' && master_menu == 'home') { %>
+                        style="display: block;"
+                    <% } %> >
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="<%= admin %>/home-slider">Slider</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= admin %>/home-footer"
+              >Footer</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a
+      <% if (typeof master_menu == 'string' && master_menu == 'services') { %>
+                        class="nav-link collapsed"
+                    <% }else{ %>
+                        class="nav-link"
+                      <% } %> 
+        data-toggle="collapse"
+        href="#ui-basic2"
+        aria-expanded="false"
+        aria-controls="ui-basic"
+      >
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Services</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div 
+        <% if (typeof master_menu == 'string' && master_menu == 'services') { %>
+                        class="collapse show"
+                    <% }else{ %>
+                        class="collapse"
+                      <% } %> 
+                      id="ui-basic2" <% if (typeof master_menu == 'string' && master_menu == 'services') { %>
+                        style="display: block;"
+                    <% } %> >
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="<%= admin %>/services-popular">Popular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= admin %>/services-upcoming"
+              >Upcoming</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= admin %>/software-proficiancy"
+              >Software Proficiancy</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="modal" tabindex="-1" role="dialog" id="logoutmodal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header p-3">
+        <h5 class="modal-title">Logout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <p style="font-size:24px; text-align: center;margin-bottom:0px !important;" >Are You really want to logout this session.</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-around" style="border-top:none !important;">
+        <button type="button" class="btn btn-danger" id="logout_id" onClick="logoutmodalFun(this.value)">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

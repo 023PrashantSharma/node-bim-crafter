@@ -1,0 +1,39 @@
+<section
+  class="section novi-background breadcrumbs-custom bg-image context-dark"
+  style="
+    background-image: url(/front-assets/images/temp-img/IMG-20221018-WA0017.jpg);
+  "
+>
+  <div class="breadcrumbs-custom-inner">
+    <div class="container breadcrumbs-custom-container">
+      <div class="breadcrumbs-custom-main">
+        <h6 class="breadcrumbs-custom-subtitle title-decorated">Services</h6>
+        <h2 class="text-uppercase breadcrumbs-custom-title">Services</h2>
+      </div>
+      <ul class="breadcrumbs-custom-path">
+        <li><a href="/">Home</a></li>
+        <li class="active">Services</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="section novi-background section-lg">
+  <div class="container">
+    <% if(PopularServicesData){ PopularServicesData.map((item,index)=>{%>
+    <div class="card mb-3">
+      <img
+        src="/uploads/services/popular/<%=item.services_image%>"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%=item.title%></h5>
+        <p class="card-text"><%=item.description%>.</p>
+        <p class="card-text">
+          <small class="text-muted">Last updated : <%=item.createdAt%></small>
+        </p>
+      </div>
+    </div>
+    <% })} %>
+  </div>
+</section>

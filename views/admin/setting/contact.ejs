@@ -1,0 +1,162 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4><%= title %></h4>
+			</div>
+			<div class="card-body">
+				<form method="post" id="adminContactFrm" class="separate-form validation-form-container">
+				<input type="hidden" name="contact_set_id" id="contact_set_id" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet._id %><% } %>">
+					<div class="row">
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Mobile Number <span class="Img_ext">eg.9876543210</span></strong></label>
+                                <input type="text" class="form-control in_field mobile-valid" name="mobile_number" id="mobile_number" placeholder="Please Enter Mobile Number" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.mobile_number %><% } %>">
+                                <div class="ui corner label star_box" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div>
+							</div>
+						</div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Telegram Mobile (Optional)</strong></label>
+                                <input type="text" class="form-control in_field" name="telegram_mobile" id="telegram_mobile" placeholder="Please Enter Telegram Mobile Number" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.telegram_mobile %><% } %>">
+                                <!-- <div class="ui corner label star_box" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>WhatsApp Number</strong></label>
+                                <input type="text" class="form-control in_field mobile-valid" name="whats_mobile" id="whats_mobile" placeholder="Please Enter WhatsApp Mobile Number" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.whats_mobile %><% } %>">
+                                <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div>
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Landline 1 (Optional) <span class="Img_ext">eg.0141-9999999</span></strong></label>
+                                <input class="form-control in_field" type="number" min=0 name="landline_1" id="landline_1"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.landline_1 %><% } %>" placeholder="Enter Landline Number">
+                               <!--  <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Landline 2 (Optional)</strong></label>
+                                <input class="form-control in_field" type="number" min=0 name="landline_2" id="landline_2"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.landline_2 %><% } %>" placeholder="Enter Second Landline Number">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Email 1</strong></label>
+                                <input class="form-control in_field" type="text" name="email_1" id="email_1" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.email_1 %><% } %>" placeholder="Enter Email">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Email 2 (Optional)</strong></label>
+                                <input class="form-control in_field" type="text" name="email_2" id="email_2"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.email_2 %><% } %>" placeholder="Enter Email">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Facebook (Optional)</strong></label>
+                                <input class="form-control in_field" type="text" name="facebook" id="facebook" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.facebook %><% } %>" placeholder="Enter Facebook Link">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Twitter (Optional)</strong></label>
+                                <input class="form-control in_field" type="text" name="twitter" id="twitter" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.twitter %><% } %>" placeholder="Enter Twitter Link">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Youtube (Optional)</strong></label>
+                                <input class="form-control in_field" type="text" name="youtube" id="youtube" value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.youtube %><% } %>" placeholder="Enter Youtube Link">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Google Plus (Optional)</strong></label>
+                                <input class="form-control in_field" type="text" name="google_plus" id="google_plus"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.google_plus %><% } %>" placeholder="Enter Google Plus Link">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Instagram (Optional)</strong></label>
+                                <input class="form-control in_field" type="text" name="instagram" id="instagram"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.instagram %><% } %>" placeholder="Enter Instagram Link">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-md-3 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Latitude</strong></label>
+                                <input class="form-control in_field" type="text" name="latitude" id="latitude"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.latitude %><% } %>" placeholder="Enter Latitude">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+                        <div class="col-md-3 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Longitude</strong></label>
+                                <input class="form-control in_field" type="text" name="longitude" id="longitude"  value="<% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.longitude %><% } %>" placeholder="Enter Longitude">
+                                <!-- <div class="ui corner label" id="demo1">
+                                    <i class="asterisk icon">*</i>
+                                </div> -->
+							</div>
+						</div>
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label"><strong>Address</strong></label>
+                                <textarea class="form-control in_field" name='address' id='address'><% if (typeof ContactSet !== 'undefined' && ContactSet !== null){ %><%= ContactSet.address %><% } %></textarea>
+                                <div class="ui corner label star_box">
+                                    <i class="asterisk icon">*</i>
+                                </div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<button type="submit" class="effect-btn btn btn-primary squer-btn mt-2 mr-2" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Submit</button>
+								<button type="reset" class="effect-btn btn btn-danger squer-btn mt-2 mr-2">Reset</button>
+							</div>
+						</div>
+					</div>
+					<div class="form-group mt-2">
+						<p id="errormsg"></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
